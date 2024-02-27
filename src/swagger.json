@@ -1,0 +1,102 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Hadware API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/hardwares": {
+      "get": {
+        "operationId": "hardware_list",
+        "tags": ["hardware"],
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Hardware"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories": {
+      "get": {
+        "operationId": "category_list",
+        "tags": ["category"],
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Category"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Hardware": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "Processador",
+              "Placa Mãe",
+              "Memória",
+              "Placa de Vídeo",
+              "SSD",
+              "Fonte",
+              "Gabinete",
+              "Disco Rígido Interno (HD)"
+            ]
+          },
+          "img": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer"
+          }
+        }
+      },
+      "Category": {
+        "type": "string",
+        "enum": [
+          "Processador",
+          "Placa Mãe",
+          "Memória",
+          "Placa de Vídeo",
+          "SSD",
+          "Fonte",
+          "Gabinete",
+          "Disco Rígido Interno (HD)"
+        ]
+      }
+    }
+  }
+}
